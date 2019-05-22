@@ -20,6 +20,10 @@ execute_task2 <- function() {
 
 
 get_data_from_db <- function(db_connection) {
+    if (!does_result_table_exist(db_connection)) {
+        return(NULL)
+    }
+    
     statement <- "SELECT * FROM daily_metric_count"
 
     resultset <- dbSendQuery(db_connection, statement)
@@ -31,6 +35,10 @@ get_data_from_db <- function(db_connection) {
     dbClearResult(resultset)
     
     return(result_df)
+}
+
+does_result_table_exist <- function(db_connection) {
+    return("daily_metric_count" %in% dbListTables(db_connection))
 }
 
 save_all_plots <- function(data) {
