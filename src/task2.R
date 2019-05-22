@@ -52,3 +52,5 @@ save_plot <- function(metric, data) {
     ggsave(output_file, plot = p, device = format, path = output_dir)
 }
 
+execute_task2()
+

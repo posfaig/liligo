@@ -82,3 +82,5 @@ connect_to_mysql <- function() {
     return(mysql_db)
 }
 
+execute_task1()
+
